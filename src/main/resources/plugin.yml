@@ -1,0 +1,6 @@
+name: Sickness
+version: '${project.version}'
+main: xyz.roosterseatyou.sickness.Sickness
+api-version: 1.19
+authors: [ Roosterseatyou ]
+description: Adds disease, sickness, etc. to the game
