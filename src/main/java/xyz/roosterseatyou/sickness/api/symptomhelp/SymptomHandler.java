@@ -16,6 +16,12 @@ public class SymptomHandler<T extends Event> {
         this.eventClass = eventClass;
     }
 
+    public void addSymptom(Consumer<T> func, Class<T> eventClass) {
+        EventHelper eventHelper = new EventHelper(Sickness.getInstance(), eventClass, func);
+        eventHelper.register();
+        eventHelpers.add(eventHelper);
+    }
+
     public void setFunction(Consumer<T> func) {
         this.func = func;
     }
