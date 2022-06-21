@@ -13,13 +13,33 @@ import java.util.function.Consumer;
 public class Symptom<T extends Event> implements Listener {
     private Class<T> eventClass;
     private Consumer<T> handler;
-    private Illness illness;
-    private ArrayList<EventHelper> eventHelpers = new ArrayList<>();
+    private final ArrayList<EventHelper> eventHelpers = new ArrayList<>();
+    private SymptomHandler symptomHandler;
 
-    public Symptom(Class<T> eventClass, Consumer<T> handler, Illness illness) {
+    public Symptom(Class<T> eventClass, SymptomHandler symptomHandler) {
         this.eventClass = eventClass;
-        this.handler = handler;
-        this.illness = illness;
+        this.symptomHandler = symptomHandler;
+    }
+
+    public void register() {
+        if(handler == null) return;
+        EventHelper eventHelper = new EventHelper(Sickness.getInstance(), eventClass, handler);
+        eventHelper.register();
+        eventHelpers.add(eventHelper);
+    }
+
+    public void unregister() {
+        for (EventHelper eventHelper : eventHelpers) {
+            eventHelper.unregister();
+            eventHelpers.remove(eventHelper);
+        }
+    }
+
+    @EventHandler
+    public void handle(T event) {
+        if (eventClass.isInstance(event) && handler != null) {
+            handler.accept(event);
+        }
     }
 
     public Class<T> getEventClass() {
@@ -38,23 +58,11 @@ public class Symptom<T extends Event> implements Listener {
         this.handler = handler;
     }
 
-    public void register() {
-        EventHelper eventHelper = new EventHelper(Sickness.getInstance(), eventClass, handler);
-        eventHelper.register();
-        eventHelpers.add(eventHelper);
+    public void setSymptomHandler(SymptomHandler symptomHandler) {
+        this.symptomHandler = symptomHandler;
     }
 
-    public void unregister() {
-        for (EventHelper eventHelper : eventHelpers) {
-            eventHelper.unregister();
-            eventHelpers.remove(eventHelper);
-        }
-    }
-
-    @EventHandler
-    public void handle(T event) {
-        if (eventClass.isInstance(event)) {
-            handler.accept(event);
-        }
+    public SymptomHandler getSymptomHandler() {
+        return symptomHandler;
     }
 }

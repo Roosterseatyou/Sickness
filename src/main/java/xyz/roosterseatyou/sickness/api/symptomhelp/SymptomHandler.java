@@ -44,4 +44,12 @@ public class SymptomHandler implements Listener {
         }
         symptoms.clear();
     }
+
+    public Illness getIllness() {
+        return illness;
+    }
+
+    public void setIllness(Illness illness) {
+        this.illness = illness;
+    }
 }

@@ -4,6 +4,7 @@ import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.roosterseatyou.sickness.api.Illness;
+import xyz.roosterseatyou.sickness.sicknesses.FoodPoisoning;
 
 import java.util.ArrayList;
 
