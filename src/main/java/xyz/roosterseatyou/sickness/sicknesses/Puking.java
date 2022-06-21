@@ -9,9 +9,8 @@ import xyz.roosterseatyou.sickness.api.symptomhelp.SymptomHandler;
 public class Puking extends Symptom<PlayerItemConsumeEvent> {
     public Puking(Class<PlayerItemConsumeEvent> eventClass, SymptomHandler symptomHandler) {
         super(eventClass, symptomHandler);
-
-        this.setHandler(event -> {
-            if(event.getPlayer() == symptomHandler.getIllness().getPlayer()) {
+        setHandler(event -> {
+            if(symptomHandler.getIllness().isInfected(event.getPlayer())) {
                 event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 20 * 60, 1));
                 event.getPlayer().setFoodLevel(event.getPlayer().getFoodLevel() - 3);
             }

@@ -4,6 +4,8 @@ import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.roosterseatyou.sickness.api.Illness;
+import xyz.roosterseatyou.sickness.commands.ApplyFoodPoisoning;
+import xyz.roosterseatyou.sickness.sicknesses.FoodPoisoning;
 
 import java.util.ArrayList;
 
@@ -17,6 +19,8 @@ public final class Sickness extends JavaPlugin {
         // Plugin startup logic
         instance = this;
         logger = getComponentLogger();
+        FoodPoisoning.FOOD_POISONING.register();
+        getCommand("applyfoodpoisoning").setExecutor(new ApplyFoodPoisoning());
     }
 
     @Override

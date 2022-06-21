@@ -1,18 +1,19 @@
 package xyz.roosterseatyou.sickness.sicknesses;
 
-import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import xyz.roosterseatyou.sickness.api.Illness;
 import xyz.roosterseatyou.sickness.api.symptomhelp.SymptomHandler;
 
 public class FoodPoisoning extends Illness {
+    public static FoodPoisoning FOOD_POISONING = new FoodPoisoning();
 
-    public FoodPoisoning(Player player, int durationInMinutes) {
-        super("FoodPoisoning", "You are poisoned by food", "You are poisoned by food", player, durationInMinutes);
+    private FoodPoisoning() {}
 
+    @Override
+    public void register() {
         SymptomHandler symptomHandler = new SymptomHandler(this);
-        symptomHandler.addSymptom(new Puking(PlayerItemConsumeEvent.class, symptomHandler));
-        addSymptomHandler(symptomHandler);
-        register();
+        setSymptomHandler(symptomHandler);
+        addSymptom(new Puking(PlayerItemConsumeEvent.class, symptomHandler));
+        symptomHandler.register();
     }
 }
