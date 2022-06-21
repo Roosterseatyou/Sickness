@@ -1,13 +1,9 @@
 package xyz.roosterseatyou.sickness.api.symptomhelp;
 
-import org.bukkit.event.Event;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import xyz.roosterseatyou.sickness.Sickness;
 import xyz.roosterseatyou.sickness.api.Illness;
 
 import java.util.ArrayList;
-import java.util.function.Consumer;
 
 public class SymptomHandler implements Listener {
     private ArrayList<Symptom> symptoms = new ArrayList<>();
