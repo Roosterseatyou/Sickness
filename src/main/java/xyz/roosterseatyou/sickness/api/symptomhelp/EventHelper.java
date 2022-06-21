@@ -1,9 +1,6 @@
 package xyz.roosterseatyou.sickness.api.symptomhelp;
 
-import org.bukkit.event.Event;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
+import org.bukkit.event.*;
 import org.bukkit.plugin.Plugin;
 
 import java.util.function.Consumer;
@@ -27,7 +24,7 @@ public class EventHelper<T extends Event> implements Listener {
     }
 
     public void register() {
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+        plugin.getServer().getPluginManager().registerEvent(eventClass, this, EventPriority.NORMAL, (l, e) -> onEvent((T) e), plugin);
     }
 
     public void unregister() {

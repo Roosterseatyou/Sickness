@@ -21,7 +21,7 @@ public class Symptom<T extends Event> implements Listener {
 
     public void register() {
         if(handler == null) return;
-        EventHelper eventHelper = new EventHelper(Sickness.getInstance(), eventClass, handler);
+        EventHelper eventHelper = new EventHelper<>(Sickness.getInstance(), eventClass, handler);
         eventHelper.register();
         eventHelpers.add(eventHelper);
     }

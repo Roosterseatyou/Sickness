@@ -21,24 +21,6 @@ public class Registry {
         return illnesses;
     }
 
-    public static Illness getIllness(String name) {
-        for (Illness illness : illnesses) {
-            if (illness.getName().equals(name)) {
-                return illness;
-            }
-        }
-        return null;
-    }
-
-    public static boolean isIllness(String name) {
-        for (Illness illness : illnesses) {
-            if (illness.getName().equals(name)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static boolean isRegisteredIllness(Illness illness) {
         return illnesses.contains(illness);
     }
