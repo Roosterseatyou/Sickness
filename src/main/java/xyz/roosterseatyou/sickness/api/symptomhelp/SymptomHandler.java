@@ -13,7 +13,10 @@ public class SymptomHandler implements Listener {
         this.illness = illness;
     }
 
+    public SymptomHandler() {}
+
     public void register() {
+        // no need to register the symptoms manually, since that will be handled here, and will only register symptoms in use.
         for (Symptom symptom : symptoms) {
             symptom.register();
         }
