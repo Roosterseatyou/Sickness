@@ -1,6 +1,8 @@
 package xyz.roosterseatyou.sickness.api.symptomhelp;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.event.Listener;
+import xyz.roosterseatyou.sickness.Sickness;
 import xyz.roosterseatyou.sickness.api.Illness;
 
 import java.util.ArrayList;
@@ -16,10 +18,13 @@ public class SymptomHandler implements Listener {
     public SymptomHandler() {}
 
     public void register() {
-        // no need to register the symptoms manually, since that will be handled here, and will only register symptoms in use.
+        // no need to register the symptoms manually, since that will be handled here,
+        // and will only register symptoms in use.
         for (Symptom symptom : symptoms) {
-            symptom.register();
+            symptom.register(this);
+            Sickness.logger().info(Component.text("Registered symptom: " + symptom.toString()));
         }
+        Sickness.logger().info(Component.text("Registered symptom handler"));
     }
 
     public void unregister() {
