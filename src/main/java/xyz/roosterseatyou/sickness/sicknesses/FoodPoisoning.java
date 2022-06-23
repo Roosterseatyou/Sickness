@@ -13,7 +13,7 @@ public class FoodPoisoning extends Illness {
     public void register() {
         SymptomHandler symptomHandler = new SymptomHandler(this);
         setSymptomHandler(symptomHandler);
-        addSymptom(new Puking(PlayerItemConsumeEvent.class, symptomHandler));
+        addSymptom(Puking.PUKING);
         symptomHandler.register();
     }
 }
