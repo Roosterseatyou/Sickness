@@ -1,4 +1,4 @@
-package xyz.roosterseatyou.sickness.sicknesses;
+package xyz.roosterseatyou.sickness.sicknesses.symptoms;
 
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.potion.PotionEffect;
