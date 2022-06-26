@@ -1,0 +1,39 @@
+package xyz.roosterseatyou.sickness.sicknesses.symptoms;
+
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import xyz.roosterseatyou.sickness.Sickness;
+import xyz.roosterseatyou.sickness.api.symptomhelp.Symptom;
+import xyz.roosterseatyou.sickness.api.symptomhelp.SymptomHandler;
+import xyz.roosterseatyou.sickness.utils.MathUtils;
+
+public class Sneezing extends Symptom {
+    public static Sneezing SNEEZING = new Sneezing();
+
+    private Sneezing() {}
+
+    @Override
+    public void register(SymptomHandler symptomHandler) {
+        Sickness.getInstance().getLogger().info("Sneezing Attempting to Register");
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Sickness.getInstance(), () -> {
+            Sickness.logger().info("Attempting Sneeze Task");
+            for(Player p : symptomHandler.getIllness().getPlayers()) {
+                p.sendMessage(Component.text("Attempting to sneeze...").color(TextColor.color(0xFF0000)));
+                if(MathUtils.rngHelper(20)) {
+                    for(Player tar : p.getLocation().getNearbyPlayers(6)) {
+                        if(MathUtils.rngHelper(30)) symptomHandler.getIllness().infectPlayer(tar);
+                    }
+                    p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * 3, 1));
+                    ItemStack snot = new ItemStack(Material.LIME_STAINED_GLASS_PANE);
+                    p.getWorld().dropItem(p.getLocation(), snot);
+                }
+            }
+        }, 0, 15*20);
+    }
+}

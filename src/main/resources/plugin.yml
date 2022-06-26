@@ -10,3 +10,8 @@ commands:
     usage: /applyfoodpoisoning
     permission: sickness.applyfoodpoisoning
     permission-message: You don't have permission to use this command.
+  applycold:
+    description: Apply cold
+    usage: /applycold
+    permission: sickness.applycold
+    permission-message: You don't have permission to use this command.
