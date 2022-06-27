@@ -3,6 +3,7 @@ package xyz.roosterseatyou.sickness.sicknesses;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
+import xyz.roosterseatyou.sickness.Sickness;
 import xyz.roosterseatyou.sickness.api.Illness;
 import xyz.roosterseatyou.sickness.api.contagion.Contagion;
 import xyz.roosterseatyou.sickness.api.infector.EventBasedInfector;

@@ -22,9 +22,7 @@ public class SymptomHandler implements Listener {
         // and will only register symptoms in use.
         for (Symptom symptom : symptoms) {
             symptom.register(this);
-            Sickness.logger().info(Component.text("Registered symptom: " + symptom.getClass().getSimpleName()));
         }
-        Sickness.logger().info(Component.text("Registered symptom handler for illness: " + illness.getClass().getSimpleName()));
     }
 
     public void unregister() {

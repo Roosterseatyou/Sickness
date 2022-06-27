@@ -18,7 +18,6 @@ public class Cold extends Illness {
     @Override
     public void register() {
         //symptom handler
-        Sickness.logger().info("Attempting to register SymptomHandler for Cold");
         SymptomHandler symptomHandler = new SymptomHandler(this);
         setSymptomHandler(symptomHandler);
         addSymptom(Sneezing.SNEEZING);

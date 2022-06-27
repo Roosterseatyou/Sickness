@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import xyz.roosterseatyou.sickness.Sickness;
@@ -25,12 +26,15 @@ public class Sneezing extends Symptom {
             Sickness.logger().info("Attempting Sneeze Task");
             for(Player p : symptomHandler.getIllness().getPlayers()) {
                 p.sendMessage(Component.text("Attempting to sneeze...").color(TextColor.color(0xFF0000)));
-                if(MathUtils.rngHelper(20)) {
+                if(MathUtils.rngHelper(40)) {
                     for(Player tar : p.getLocation().getNearbyPlayers(6)) {
                         if(MathUtils.rngHelper(30)) symptomHandler.getIllness().infectPlayer(tar);
                     }
                     p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * 3, 1));
                     ItemStack snot = new ItemStack(Material.LIME_STAINED_GLASS_PANE);
+                    ItemMeta snotMeta = snot.getItemMeta();
+                    snotMeta.displayName(Component.text("Snot").color(TextColor.color(19, 82, 2)));
+                    snot.setItemMeta(snotMeta);
                     p.getWorld().dropItem(p.getLocation(), snot);
                 }
             }
