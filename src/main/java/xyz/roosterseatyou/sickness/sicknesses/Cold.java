@@ -8,6 +8,7 @@ import xyz.roosterseatyou.sickness.api.contagion.Contagion;
 import xyz.roosterseatyou.sickness.api.infector.Infector;
 import xyz.roosterseatyou.sickness.api.symptomhelp.SymptomHandler;
 import xyz.roosterseatyou.sickness.sicknesses.symptoms.Sneezing;
+import xyz.roosterseatyou.sickness.utils.MathUtils;
 
 public class Cold extends Illness {
     public static Cold COLD = new Cold();
@@ -33,10 +34,10 @@ public class Cold extends Illness {
         Infector infector = new Infector(this);
         infector.register(() -> {
             for(Player p : Bukkit.getOnlinePlayers()) {
-                if(!isInfected(p)) {
+                if(!isInfected(p) && MathUtils.rngHelper(2)) {
                     infectPlayer(p);
                 }
             }
-        });
+        }, 20);
     }
 }
