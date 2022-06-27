@@ -1,17 +1,21 @@
 package xyz.roosterseatyou.sickness.api;
 
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import xyz.roosterseatyou.sickness.api.contagion.Contagion;
+import xyz.roosterseatyou.sickness.api.infector.Infector;
 import xyz.roosterseatyou.sickness.api.symptomhelp.Symptom;
 import xyz.roosterseatyou.sickness.api.symptomhelp.SymptomHandler;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public abstract class Illness {
     private static SymptomHandler symptomHandler;
     private Contagion contagion;
     private ArrayList<Player> players = new ArrayList<>();
     private boolean isContagious;
+    private Infector infector;
 
     protected abstract void register();
 
@@ -58,5 +62,13 @@ public abstract class Illness {
 
     public boolean isContagious() {
         return isContagious;
+    }
+
+    public void setInfector(Infector infector) {
+        this.infector = infector;
+    }
+
+    public Infector getInfector() {
+        return infector;
     }
 }
