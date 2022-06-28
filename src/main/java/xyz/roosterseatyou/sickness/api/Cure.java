@@ -1,23 +1,31 @@
 package xyz.roosterseatyou.sickness.api;
 
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
+import xyz.roosterseatyou.sickness.Sickness;
+import xyz.roosterseatyou.sickness.api.symptomhelp.EventHelper;
 import xyz.roosterseatyou.sickness.api.symptomhelp.SymptomHandler;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
-public abstract class Cure {
-    enum CureType {
+public abstract class Cure<T extends Event> {
+    protected enum CureType {
         PILL,
         SHOT,
         OTHER
     }
 
+    private Class<T> eventClass;
+
+    private Consumer<T> handler;
+
     private CureType cureType;
-    private String name;
     private ItemStack item;
     private SymptomHandler symptomHandler;
     private ArrayList<Illness> illnessesToCure = new ArrayList<>();
+    private ArrayList<EventHelper> eventHelpers = new ArrayList<>();
 
     public void setSymptomHandler(SymptomHandler symptomHandler) {
         this.symptomHandler = symptomHandler;
@@ -29,12 +37,22 @@ public abstract class Cure {
         symptomHandler.unregister();
     }
 
-    public CureType getCureType() {
-        return cureType;
+    public void setEventClass(Class<T> eventClass) {
+        this.eventClass = eventClass;
     }
 
-    public String getName() {
-        return name;
+    public void setHandler(Consumer<T> handler) {
+        this.handler = handler;
+    }
+
+    protected void registerEvent() {
+        EventHelper eventHelper = new EventHelper<>(Sickness.getInstance(), eventClass, handler);
+        eventHelpers.add(eventHelper);
+        eventHelper.register();
+    }
+
+    public CureType getCureType() {
+        return cureType;
     }
 
     public ItemStack getItem() {
@@ -43,10 +61,6 @@ public abstract class Cure {
 
     public void setCureType(CureType cureType) {
         this.cureType = cureType;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void setItem(ItemStack item) {
@@ -66,4 +80,6 @@ public abstract class Cure {
     public void removeIllnessToCure(Illness illness) {
         illnessesToCure.remove(illness);
     }
+
+
 }

@@ -16,6 +16,7 @@ public abstract class Illness {
     private ArrayList<Player> players = new ArrayList<>();
     private boolean isContagious;
     private Infector infector;
+    private Cure cure;
 
     protected abstract void register();
 
@@ -70,5 +71,13 @@ public abstract class Illness {
 
     public Infector getInfector() {
         return infector;
+    }
+
+    public void setCure(Cure cure) {
+        this.cure = cure;
+    }
+
+    public Cure getCure() {
+        return cure;
     }
 }
