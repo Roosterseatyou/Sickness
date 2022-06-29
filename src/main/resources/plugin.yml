@@ -15,3 +15,8 @@ commands:
     usage: /applycold
     permission: sickness.applycold
     permission-message: You don't have permission to use this command.
+  getcoldcure:
+    description: Get cold cure
+    usage: /getcoldcure
+    permission: sickness.getcoldcure
+    permission-message: You don't have permission to use this command.

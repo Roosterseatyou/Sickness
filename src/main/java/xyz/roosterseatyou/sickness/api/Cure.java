@@ -81,5 +81,9 @@ public abstract class Cure<T extends Event> {
         illnessesToCure.remove(illness);
     }
 
+    public ArrayList<Illness> getIllnessesToCure() {
+        return illnessesToCure;
+    }
+
 
 }

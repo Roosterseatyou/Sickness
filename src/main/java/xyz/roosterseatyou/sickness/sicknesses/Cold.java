@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffectType;
 import xyz.roosterseatyou.sickness.Sickness;
 import xyz.roosterseatyou.sickness.api.Cure;
@@ -54,15 +55,17 @@ public class Cold extends Illness {
                 PotionMeta meta = (PotionMeta) item.getItemMeta();
                 meta.displayName(Component.text("Cold Cure"));
                 meta.addCustomEffect(PotionEffectType.CONFUSION.createEffect(20 * 60, 1), true);
+                meta.getPersistentDataContainer().set(Sickness.CURE_KEY, PersistentDataType.STRING, "cold");
                 item.setItemMeta(meta);
 
                 setItem(item);
                 setCureType(CureType.OTHER);
 
                 setEventClass(PlayerItemConsumeEvent.class);
+                addIllnessToCure(Cold.COLD);
 
                 setHandler((event) -> {
-                    if(event.getItem().equals(item)) {
+                    if(event.getItem().getItemMeta().getPersistentDataContainer().get(Sickness.CURE_KEY, PersistentDataType.STRING).equals("cold")) {
                         curePlayer(event.getPlayer());
                     }
                 });
@@ -71,7 +74,9 @@ public class Cold extends Illness {
             }
             @Override
             public void curePlayer(Player player) {
-                getPlayers().remove(player);
+                for(Illness illness : getIllnessesToCure()) {
+                    illness.removePlayer(player);
+                }
             }
         });
 
