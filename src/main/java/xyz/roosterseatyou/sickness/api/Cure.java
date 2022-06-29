@@ -71,7 +71,11 @@ public abstract class Cure<T extends Event> {
         return symptomHandler;
     }
 
-    public abstract void curePlayer(Player player);
+    protected void curePlayer(Player player) {
+        for(Illness illness : getIllnessesToCure()) {
+            illness.removePlayer(player);
+        }
+    }
 
     public void addIllnessToCure(Illness illness) {
         illnessesToCure.add(illness);

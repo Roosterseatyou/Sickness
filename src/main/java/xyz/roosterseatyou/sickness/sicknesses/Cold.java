@@ -72,12 +72,6 @@ public class Cold extends Illness {
 
                 registerEvent();
             }
-            @Override
-            public void curePlayer(Player player) {
-                for(Illness illness : getIllnessesToCure()) {
-                    illness.removePlayer(player);
-                }
-            }
         });
 
         getCure().register();
