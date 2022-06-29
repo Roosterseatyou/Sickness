@@ -21,9 +21,7 @@ public class Sneezing extends Symptom {
 
     @Override
     public void register(SymptomHandler symptomHandler) {
-        Sickness.getInstance().getLogger().info("Sneezing Attempting to Register");
         Bukkit.getScheduler().scheduleSyncRepeatingTask(Sickness.getInstance(), () -> {
-            Sickness.logger().info("Attempting Sneeze Task");
             for(Player p : symptomHandler.getIllness().getPlayers()) {
                 p.sendMessage(Component.text("Attempting to sneeze...").color(TextColor.color(0xFF0000)));
                 if(MathUtils.rngHelper(40)) {
