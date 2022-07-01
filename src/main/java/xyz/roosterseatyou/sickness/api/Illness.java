@@ -1,14 +1,12 @@
 package xyz.roosterseatyou.sickness.api;
 
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import xyz.roosterseatyou.sickness.api.contagion.Contagion;
 import xyz.roosterseatyou.sickness.api.infector.Infector;
 import xyz.roosterseatyou.sickness.api.symptomhelp.Symptom;
 import xyz.roosterseatyou.sickness.api.symptomhelp.SymptomHandler;
 
 import java.util.ArrayList;
-import java.util.function.Consumer;
 
 public abstract class Illness {
     private static SymptomHandler symptomHandler;

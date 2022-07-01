@@ -1,8 +1,6 @@
 package xyz.roosterseatyou.sickness.api.infector;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 import xyz.roosterseatyou.sickness.Sickness;
 import xyz.roosterseatyou.sickness.api.Illness;
 

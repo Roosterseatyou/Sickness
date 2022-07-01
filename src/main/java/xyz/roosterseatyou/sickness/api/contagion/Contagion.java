@@ -2,7 +2,6 @@ package xyz.roosterseatyou.sickness.api.contagion;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.util.BoundingBox;
 import xyz.roosterseatyou.sickness.Sickness;
 import xyz.roosterseatyou.sickness.api.Illness;
 import xyz.roosterseatyou.sickness.utils.MathUtils;

@@ -5,13 +5,11 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.roosterseatyou.sickness.api.Illness;
-import xyz.roosterseatyou.sickness.api.symptomhelp.SymptomHandler;
 import xyz.roosterseatyou.sickness.commands.ApplyCold;
 import xyz.roosterseatyou.sickness.commands.ApplyFoodPoisoning;
 import xyz.roosterseatyou.sickness.commands.GiveColdCure;
 import xyz.roosterseatyou.sickness.sicknesses.Cold;
 import xyz.roosterseatyou.sickness.sicknesses.FoodPoisoning;
-import xyz.roosterseatyou.sickness.sicknesses.symptoms.Sneezing;
 
 import java.util.ArrayList;
 

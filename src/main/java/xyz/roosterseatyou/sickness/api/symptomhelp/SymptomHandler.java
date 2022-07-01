@@ -1,8 +1,6 @@
 package xyz.roosterseatyou.sickness.api.symptomhelp;
 
-import net.kyori.adventure.text.Component;
 import org.bukkit.event.Listener;
-import xyz.roosterseatyou.sickness.Sickness;
 import xyz.roosterseatyou.sickness.api.Illness;
 
 import java.util.ArrayList;

@@ -1,8 +1,6 @@
 package xyz.roosterseatyou.sickness.api.symptomhelp;
 
 import org.bukkit.event.Event;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import xyz.roosterseatyou.sickness.Sickness;
 
 import java.util.ArrayList;
