@@ -15,7 +15,6 @@ public class Puking extends Symptom<PlayerItemConsumeEvent> {
     @Override
     public void register(SymptomHandler symptomHandler) {
         setHandler(event -> {
-            Sickness.getInstance().getLogger().info("Puking");
             if(symptomHandler.getIllness().isInfected(event.getPlayer())) {
                 event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 20 * 60, 1));
                 event.getPlayer().setFoodLevel(event.getPlayer().getFoodLevel() - 3);
@@ -23,7 +22,5 @@ public class Puking extends Symptom<PlayerItemConsumeEvent> {
         });
         setEventClass(PlayerItemConsumeEvent.class);
         registerEvent();
-
-        Sickness.logger().info("Registered Puking");
     }
 }
